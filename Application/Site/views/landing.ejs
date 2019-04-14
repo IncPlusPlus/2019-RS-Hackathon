@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<% include partial/head.ejs %>
+	<% let fullAddress = home.StreetAddress + ", " + home.City + ", " + home.State + ", " + home.ZipCode %>
+
+	<% let intToBool = function(b) { return b == 1 ? 'Yes' : 'No'; }%>
+	<title>Homefront - <%= fullAddress %></title>
+</head>
+
+<body>
+
+	<div id="navigation">
+		<a href="/"><h1 class="navElement">Homefront</h1></a>
+		<img src="/icon.png" alt="icon" class="navElement">
+		<a class="navElement navLink" href="/submit">Submit a safety report</a>
+	</div>
+
+
+</body>
+	
+	<div id="content">
+		<div style="height:100px"></div>
+
+		<div style="display: inline;">
+			<h1 style="float: left; font-size: 64px;"><%= fullAddress %> - </h1>
+			<span class="homeListRatingBig" style="float:left; background-color: <%= home.Rating > 3 ? (home.Rating > 7 ? '#6ff422' : '#f4dc22') : '#f43022'; %>;"><%= home.Rating %></span>
+		</div>
+		<div style="height:148px"></div>
+
+		<ul>
+			<h2>Basic Info</h2>
+			<li>Housing Type: <%= home.HousingType %></li>
+			<li>Square Footage: <%= home.SqFt %> ft<sup>2</sup></li>
+			<li>Intended Occupancy: <%= home.NumOfOccupancy %></li>
+			<% if (150 + 100 * home.NumOfOccupancy > home.SqFt) { %>
+			<li><i>Floor space too little for number of occupants</i></li>
+			<% } %>
+			<li>Has Accessibility Options: <%= intToBool(home.Accessibility) %></li>
+			<br>
+
+			<h2>Kitchen</h2>
+			<li>Number of Kitchens: <%= home.NumOfKitchen %></li>
+			<br>
+
+			<h2>Bathroom</h2>
+			<li>Number of Bathrooms: <%= home.NumOfBathroom %></li>
+			<li>Has Shower: <%= intToBool(home.HasShower) %></li>
+			<br>
+
+			<h2>Rooomrooms</h2>
+			<li>Number of Living Rooms: <%= home.NumOfLivingRoom %></li>
+			<li>Number of Bedrooms: <%= home.NumOfBedrooms %></li>
+			<li>Bedroom Square Footage: <%= home.AvgBedroomSqFt %> ft<sup>2</sup></li>
+			<li>Bedroom has Windows: <%= intToBool(home.WindowInBedroom) %></li>
+			<li>Number of Additional Rooms: <%= home.NumOfAdditionalRooms %></li>
+			<br>
+
+			<h2>Misc</h2>
+			<li>House Number Legible: <%= intToBool(home.HouseNumberLegible) %></li>
+			<li>Number of Exits: <%= home.NumberOfExits %></li>
+			<li>Handrails on Stairs: <%= intToBool(home.HandrailsOnStairs) %></li>
+			<li>Has Trash Barrels: <%= intToBool(home.HasTrashBarrels) %></li>
+			<br>
+
+		</ul>
+
+
+	</div>
+
+</html>

@@ -1,0 +1,135 @@
+* {
+	font-family: 'Roboto Mono', monospace;
+	color:#2f2f2f;
+	margin:0px;
+	padding: 0px;
+}
+
+body {
+	background-color: #f4d0cd;
+}
+
+#navigation {
+	display: block-inline;
+	position: fixed;
+
+	height:64px;
+	padding:16px;
+
+	width:100%;
+	background-color: lightpink;
+}
+
+#navigation:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: -0.25em; /* Adjusts for spacing */
+}
+.navElement {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#navigation img {
+	float:left;
+	height:64px;
+}
+#navigation h1 {
+	float:left;
+}
+#navigation input {
+	float: right;
+	width:256px;
+	height:48px;
+	border-radius: 16px;
+	transition: 0.4s ease-in-out;
+	transform: translateX(-32px);
+}
+#navigation input:focus {
+	width:512px;
+}
+#navigation .navLink {
+	text-decoration: none;
+	background-color: lightgrey;
+	padding: 8px;
+	transition: 0.4s;
+}
+#navigation .navLink:hover {
+	transition: 0.2s;
+	background-color: white;
+	cursor: pointer;
+}
+
+
+#content {
+	padding: 32px;
+}
+#mainList {
+	width:100%;
+}
+
+.homeListEntry {
+	background-color: white;
+	border-radius: 32px;
+	display: block;
+
+	vertical-align: middle;
+
+	padding:16px;
+	margin:16px;
+
+	cursor:pointer;
+	text-decoration: none;
+
+	transition: 0.1s;
+}
+.homeListEntry:hover {
+	background-color: pink;
+	transition: 0.1s;
+}
+.homeListRating {
+  height: 64px;
+  width: 64px;
+  text-shadow: 2px 2px black;
+  border: 2px solid black;
+  border-radius: 50%;
+  display: inline-block;
+
+  font-size: 48px;
+  vertical-align: center;
+  text-align: center;
+  color:white;
+}
+.homeListRatingBig {
+  height: 96px;
+  width: 96px;
+  text-shadow: 2px 2px black;
+  border: 2px solid black;
+  border-radius: 50%;
+  display: inline-block;
+
+  font-size: 72px;
+  vertical-align: center;
+  text-align: center;
+  color:white;
+}
+.homeListDetails {
+	display: inline-block;
+	padding: 0;
+	margin: 0;
+}
+.homeListDetails li {
+	background-color: lightgrey;
+	list-style-type: disc;
+	display: inline;
+	text-align: left;
+	padding: 0 10px;
+	margin: 0 4px 8px 0;
+	/*top,right,bottom,left*/
+}
+
+#mainForm {
+	margin-left: 32px;
+}

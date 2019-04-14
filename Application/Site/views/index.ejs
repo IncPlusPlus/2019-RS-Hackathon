@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<% include partial/head.ejs %>
+	<title>Homefront</title>
+	<script type="text/javascript" src="/listSearch.js"></script>
+</head>
+
+<body>
+
+	<div id="navigation">
+		<a href="/"><h1 class="navElement">Homefront</h1></a>
+		<img src="/icon.png" alt="icon" class="navElement">
+		<a class="navElement navLink" href="/submit">Submit a safety report</a>
+		<input type="text" name="search" id="listSearch" class="navElement" placeholder="Search for an Address..."><br>
+	</div>
+
+	<div style="height:100px"></div>
+	<div id="content">
+
+		<div id="mainList" style="width:100%;">
+
+			<% if (homes.length > 0) {%>
+			
+				<% homes.forEach((home, index) => { %>
+
+					<% let fullAddress = home.StreetAddress + ", " + home.City + ", " + home.State + ", " + home.ZipCode %>
+
+					<a class="homeListEntry" href='/home/<%= home.HomeID %>'>
+						<h2 class="homeListAddress" name="<%= fullAddress.toLowerCase() %>"><%= fullAddress %></h2>
+						<div class="homeListRating" style="background-color: <%= home.Rating > 3 ? (home.Rating > 7 ? '#6ff422' : '#f4dc22') : '#f43022'; %>;"><%= home.Rating %></div>
+						<ul class="homeListDetails">
+							<li><%= home.SqFt %> Sq. Ft.</li>
+							<li>Accessibility Options: <%= home.Accessibility %></li>
+							<li>Occupant Count: <%= home.NumOfOccupancy %></li>
+						</ul>
+					</a>
+
+				<% }) %>
+
+			<% } %>
+
+			<div id="noSearchResults" hidden="true">No matching results :( Did you spell it correctly?</div>
+
+		</div>
+
+	</div>
+
+</body>
+
+</html>
